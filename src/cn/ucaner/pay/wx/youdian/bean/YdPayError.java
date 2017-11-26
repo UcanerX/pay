@@ -1,0 +1,42 @@
+package cn.ucaner.pay.wx.youdian.bean;
+
+import cn.ucaner.pay.common.bean.result.PayError;
+
+/**
+ * @author: egan
+ *
+ * email egzosn@gmail.com
+ * date 2017/3/6 19:41
+ */
+public class YdPayError implements PayError {
+
+    private int errorcode;
+    private String msg;
+    private String content;
+
+    @Override
+    public String getErrorCode() {
+        return errorcode + "";
+    }
+
+    @Override
+    public String getErrorMsg() {
+        return msg;
+    }
+
+    public YdPayError(int errorcode, String msg) {
+        this.errorcode = errorcode;
+        this.msg = msg;
+    }
+
+    public YdPayError(int errorcode, String msg, String content) {
+        this.errorcode = errorcode;
+        this.msg = msg;
+        this.content = content;
+    }
+
+    @Override
+    public String getString() {
+        return "支付错误: errcode=" + errorcode + ", msg=" + msg + (null == content ? "" : "\n content:" + content);
+    }
+}
